@@ -77,7 +77,7 @@ with models.DAG(
     task
 ```
 
-In this example, the DAG with the id `monitoring2` is scheduled to run hourly, starting from January 1, 2021. The `DagsListenerOperator` monitors the DAGs with the tags "example" and "example_ui", with corresponding severity levels of 1 and 3.
+In this example, the DAG with the id `monitoring2` is scheduled to run hourly, starting from January 1, 2021. The `DagsMonitoringOperator` monitors the DAGs with the tags "example" and "example_ui", with corresponding severity levels of 1 and 3.
 
 ## Python API
 
