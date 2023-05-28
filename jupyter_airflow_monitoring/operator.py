@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
-from typing import Dict, List, Union
+from typing import Dict, List
 from airflow.models.baseoperator import BaseOperator
 from airflow import DAG
 from airflow.models.dagrun import DagRun
 from airflow.models import DagBag
-from pathlib import Path
 import pytz
 from datetime import datetime
 from jupyter_airflow_monitoring.apihandlers import set_message
@@ -18,7 +17,7 @@ class AirflowCliNotFoundException(Exception): pass
 class AirflowCliException(Exception): pass
 class InvalidDtypeException(Exception): pass
 
-class DagsListenerOperator(BaseOperator):
+class DagsMonitoringOperator(BaseOperator):
     ui_color = "#ff0000"
     ui_fgcolor = "#000000"
     custom_operator_name = "DagsListenerOperator"
@@ -28,7 +27,7 @@ class DagsListenerOperator(BaseOperator):
         1: "#FF0000"
     }
 
-    def __init__(self, cache_dir: Union[str, Path], monitored_tags_severity: Dict[str, int], severity_colors_mapping=DEFAULT_SEVERITY_COLORS_MAPPING, **kwargs) -> None:
+    def __init__(self, monitored_tags_severity: Dict[str, int], severity_colors_mapping=DEFAULT_SEVERITY_COLORS_MAPPING, **kwargs) -> None:
         super().__init__(**kwargs) #hello
         self.log.info("Loading the dag bag...")
         self.monitored_tags_severity = monitored_tags_severity
