@@ -69,8 +69,9 @@ with models.DAG(
     task = DagsMonitoringOperator(
         task_id="monitoring", 
         monitored_tags_severity={
-            "example": 1, # All dags with example tag are have severity=1 if failed
-            "example_ui": 3
+            "example": 1, # All dags with tag 'example' will have severity=1 (red) when they fail
+            "something": 2 # Severity = 2 (orange)
+            "example_ui": 3 # Severity = 3 (yellow)
         }
     )
     task
