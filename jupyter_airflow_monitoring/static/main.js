@@ -65,7 +65,7 @@ define([
                 success: function (response) {
                     var message = response.message;
                     var title = response.title;
-                    title += '\xa0\xa0\xa0|\xa0\xa0\xa0' + title
+                    title += '\xa0\xa0\xa0| \xa0\xa0\xa0' + title
                     var color = response.color;
                     
                     if ( JSON.stringify(last_response) !== JSON.stringify(response)) {

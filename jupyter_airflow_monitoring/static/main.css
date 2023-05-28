@@ -44,8 +44,8 @@
     animation-play-state: running;
 }
 @keyframes scrollTitle {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(calc(-1 * var(--textWidth) - 0.2em)); }
+    from { transform: translateX(calc(-0.5 * var(--textWidth) + 0.2em)); }
+    to { transform: translateX(calc(-1 * var(--textWidth) - 2*0.2em)); }
 }
 
 
