@@ -112,6 +112,12 @@ On click:
 
 Contributions to this project are welcome! Please feel free to submit a Pull Request or open an issue on GitHub if you encounter any problems or have suggestions for improvements. Please note that I'm fairly new to jupyter extension development.
 
+## TODOs
+
+1) Add support for windows based systems
+2) Add support for dockerized airflow
+3) Add option to use a connexion so that the airflow operator can communicate with the jupyter server (airflow on a different system than the jupyter server)
+
 ## License
 
 This project is licensed under the terms of the Apache-2.0 license.
