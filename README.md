@@ -50,7 +50,7 @@ For your convenience, we also provide an `install.sh` script that will carry out
 
 ## Usage
 
-Once the extension is installed, an operator `DagsListenerOperator` is made available which can be used to create a DAG. This DAG is then scheduled to run at your preferred frequency (e.g., hourly) to monitor your DAGs.
+Once the extension is installed, an operator `DagsMonitoringOperator` is made available which can be used to create a DAG. This DAG is then scheduled to run at your preferred frequency (e.g., hourly) to monitor your DAGs.
 
 Here is an example:
 
@@ -117,6 +117,8 @@ Contributions to this project are welcome! Please feel free to submit a Pull Req
 1) Add support for windows based systems
 2) Add support for dockerized airflow
 3) Add option to use a connexion so that the airflow operator can communicate with the jupyter server (airflow on a different system than the jupyter server)
+4) Add monitoring by dag_id
+5) Add monitoring automatic: run when a tracked DAG finished
 
 ## License
 
