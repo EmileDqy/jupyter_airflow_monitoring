@@ -17,6 +17,7 @@
     justify-content: center;
     white-space: nowrap;
     overflow: hidden;
+    --textWidth: 0px;
 }
 
 .button::before {
@@ -43,9 +44,10 @@
     animation-play-state: running;
 }
 @keyframes scrollTitle {
-    0% { left: 100%; }
-    100% { left: -100%; }
+    from { transform: translateX(-50%); }
+    to { transform: translateX(calc(-1 * var(--textWidth) - 0.2em)); }
 }
+
 
 .modal-body {
     overflow: auto;

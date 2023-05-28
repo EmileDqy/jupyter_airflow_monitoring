@@ -65,6 +65,7 @@ define([
                 success: function (response) {
                     var message = response.message;
                     var title = response.title;
+                    title += '\xa0\xa0\xa0|\xa0\xa0\xa0' + title
                     var color = response.color;
                     
                     if ( JSON.stringify(last_response) !== JSON.stringify(response)) {
@@ -79,9 +80,11 @@ define([
                         var padding = 10;
                         
                         var textWidthAirflow = checkWidth('Airflow', $('.button').css('font-size'), $('.button').css('font-family'));
-                        var textWidthTitle = checkWidth(title, $('.button').css('font-size'), $('.button').css('font-family'));
+                        var textWidthTitle = checkWidth(title, $('.button').css('font-size'), $('.button').css('font-family')); // Twice the same title
                         var maxWidth = 20 * 16;
                         
+                        button.css("--textWidth", (textWidthTitle + padding)+ "px");
+
                         var shouldScroll = false;
                         if (textWidthTitle > maxWidth) {
                             textWidthTitle = maxWidth;
@@ -91,7 +94,6 @@ define([
                         
                         button.css('background-color', color);
                         button.css('width', (textWidthAirflow + padding) + 'px');
-    
                         button.hover(
                             function () {
                                 console.log('Hover in');
