@@ -1,0 +1,52 @@
+.container {
+    width: 100%;
+}
+
+.button {
+    height: 2em; 
+    border-radius: 1em; 
+    padding: 0;
+    border: 0px solid black; 
+    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transition: width 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.button::before {
+    content: attr(data-title);
+    position: absolute;
+    white-space: nowrap;
+    left: 0; 
+    padding: 0.3em !important;
+}
+
+.button.hovered {
+    text-align: left !important;
+    left: 0;
+    padding: 0.3em !important; 
+    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.5);
+    border: none !important; 
+}
+
+.button.scrollable::before {
+    left: 100%;
+    animation: scrollTitle 7s linear infinite;
+    animation-play-state: running;
+}
+@keyframes scrollTitle {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+.modal-body {
+    overflow: auto;
+}
