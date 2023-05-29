@@ -169,6 +169,7 @@ Contributions to this project are welcome! Please feel free to submit a Pull Req
 
 ## TODOs
 
+0) Implement a more secure way of storing the /message data (the contect fetched and sent back): currently using a file in the /tmp ... not ideal. Also, the data is currently pre-rendered which is not good and secure at all. Sanitizing and processing the data is the next dev.
 1) Add support for windows based systems
 2) Add support for dockerized airflow
 3) Add option to use a connexion so that the airflow operator can communicate with the jupyter server (airflow on a different system than the jupyter server)
