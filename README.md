@@ -120,7 +120,7 @@ message = get_message()
 In order to do that, you will need to **get the session token** from the jupyter server.
 
 It usually looks something like this in the log but you can also fetch it directly from the frontend once connected:
-```
+```log
 [I 10:36:26.674 NotebookApp] Serving notebooks from local directory: /path/to/folder/
 [I 10:36:26.674 NotebookApp] Jupyter Notebook 6.5.4 is running at:
 [I 10:36:26.674 NotebookApp] http://localhost:8888/?token=<token>
