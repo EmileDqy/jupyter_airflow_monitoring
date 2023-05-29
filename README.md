@@ -9,17 +9,18 @@ The Jupyter Airflow Monitoring project is a solution designed to monitor Apache 
 2. [Installation](#installation)
    1. [Method 1](#method-1)
    2. [Method 2](#method-2)
-3. [Usage](#usage)
-4. [Python API](#python-api)
-5. [Using cURL/requests](#using-curl-requests)
+3. [/message Endpoint and Reverse Proxy](#message-endpoint-and-reverse-proxy)
+4. [Usage](#usage)
+5. [Python API](#python-api)
+6. [Using cURL/requests](#using-curl-requests)
    1. [Using cURL](#using-curl)
       1. [HTTP GET](#http-get)
       2. [HTTP POST](#http-post)
    2. [Using the python requests module](#using-the-python-requests-module)
-6. [Screenshots](#screenshots)
-7. [Contributing](#contributing)
-8. [TODOs](#todos)
-9. [License](#license)
+7. [Screenshots](#screenshots)
+8. [Contributing](#contributing)
+9. [TODOs](#todos)
+10. [License](#license)
 
 ## Why Jupyter Airflow Monitoring?
 
@@ -67,6 +68,14 @@ jupyter serverextension enable jupyter_airflow_monitoring --py
 ```
 
 For your convenience, we also provide an `install.sh` script that will carry out the steps mentioned above.
+
+## /message Endpoint and Reverse Proxy
+
+After installation, you'll be able to interact with the `/message` endpoint. This endpoint allows setting and getting messages related to your monitored DAGs.
+
+### You have a Reverse Proxy?
+
+When operating the Jupyter server behind a reverse proxy, it's crucial to configure the proxy correctly to ensure seamless connectivity between the frontend and the `/message` endpoint. Without the proper configuration, the frontend may encounter difficulties connecting to the backend, rendering the endpoint inaccessible. Ensure that your reverse proxy setup includes the necessary rules and configurations to allow communication with the `/message` endpoint. This ensures the proper functioning of the monitoring system.
 
 ## Usage
 
