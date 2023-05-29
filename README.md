@@ -9,27 +9,68 @@ The Jupyter Airflow Monitoring project is a solution designed to monitor Apache 
 ## Table of content
 
 1. [Why Jupyter Airflow Monitoring?](#why-jupyter-airflow-monitoring)
-2. [Installation](#installation)
+2. [Diagram](#diagram)
+3. [Installation](#installation)
    1. [Method 1](#method-1)
    2. [Method 2](#method-2)
-3. [/message Endpoint and Reverse Proxy](#message-endpoint-and-reverse-proxy)
+4. [/message Endpoint and Reverse Proxy](#message-endpoint-and-reverse-proxy)
     1. [The /message Endpoint](#the-message-endpoint)
     2. [You have a reverse proxy ?](#you-have-a-reverse-proxy)
-4. [Usage in Airflow](#usage-in-airflow)
-5. [Python API](#python-api)
-6. [Using cURL/requests](#using-curl-requests)
+5. [Usage in Airflow](#usage-in-airflow)
+6. [Python API](#python-api)
+7. [Using cURL/requests](#using-curl-requests)
    1. [Using cURL](#using-curl)
       1. [HTTP GET](#http-get)
       2. [HTTP POST](#http-post)
    2. [Using the python requests module](#using-the-python-requests-module)
-7. [Screenshots](#screenshots)
-8. [Contributing](#contributing)
-9. [TODOs](#todos)
-10. [License](#license)
+8. [Screenshots](#screenshots)
+9. [Contributing](#contributing)
+10. [TODOs](#todos)
+11. [License](#license)
 
 ## Why Jupyter Airflow Monitoring?
 
 While working with Airflow, it can be somewhat challenging to monitor the status of your DAGs, especially when you only need to track specific DAGs. This project proposes a solution for this problem by providing a way to specify tags for the DAGs you want to monitor and their corresponding severity levels if a DAG with the specified tag fails. This feature allows for customized and focused monitoring of your Airflow workflows. 
+
+## Diagram
+
+```mermaid
+sequenceDiagram
+    box rgba(173, 216, 230, 0.7) Airflow
+        participant A as Airflow Monitoring DAG
+    end
+    A-->>A: DagsMonitoringOperator executes
+    participant B as Cache File
+    box rgb(255, 165, 0, 0.7) Jupyter Notebook Instance
+        participant E as API Endpoint (MessageHandler)
+        participant D as Jupyter Notebook
+    end
+    participant F as User
+
+    Note over A: The Airflow DAG contains a special<br>operator (DagsMonitoringOperator) that<br>monitors the status of the other DAGs<br>based on tags and severity levels.
+
+    A->>B: Writes monitoring message
+    Note over A,B: The DAG periodically<br>writes messages to the cache file<br>in the form of JSON data.
+
+    F->>D: Log in
+    Note over F,D: The User logs into Jupyter Notebook<br>(through JupyterHub or not), initiating<br>a new session.
+
+    D->>E: Sends GET request to API endpoint
+    Note over D,E: The Jupyter notebook makes periodic GET<br>requests (every 10s) to the API endpoint provided<br>by the server extension. The request<br>is authenticated using the User's Jupyter session token.
+
+    E->>B: Reads monitoring message
+    Note over E,B: The server extension reads the message<br>from the cache file.
+
+    B->>E: Returns monitoring message
+    Note over B,E: The cache file returns the latest message to the<br>API Endpoint.
+
+    E->>D: Returns monitoring message
+    Note over E,D: The API Endpoint (MessageHandler) sends the<br>message back to the Jupyter Notebook.
+
+    D->>F: Displays monitoring message
+    Note over D,F: The Jupyter Notebook then displays the<br>monitoring message to the user.
+
+```
 
 ## Installation
 
