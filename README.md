@@ -200,4 +200,4 @@ Contributions to this project are welcome! Please feel free to submit a Pull Req
 
 This project is licensed under the terms of the Apache-2.0 license.
 
-I hope that this project helps improve your workflow and productivity when working with
+I hope that this project helps improve your workflow and productivity.
