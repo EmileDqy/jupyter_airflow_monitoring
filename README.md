@@ -36,31 +36,31 @@ To install this project, there are two methods:
 
 ### Method 1
 1. Clone the repo
-```
+```bash
 git clone https://github.com/EmileDqy/jupyter_airflow_monitoring.git
 cd jupyter_airflow_monitoring
 ```
 
 2. Install using the `install.sh` script
-```
+```bash
 ./install.sh
 ```
 
 ### Method 2
 1. Clone the repo
-```
+```bash
 git clone https://github.com/EmileDqy/jupyter_airflow_monitoring.git
 cd jupyter_airflow_monitoring
 ```
 
 2. Install using pip:
-```
+```bash
 pip install .
 ```
 
 3. Use the Jupyter CLI to enable the extension:
 
-```
+```bash
 jupyter nbextension install --py --symlink --sys-prefix jupyter_airflow_monitoring
 jupyter nbextension enable jupyter_airflow_monitoring --py --sys-prefix
 jupyter serverextension enable jupyter_airflow_monitoring --py 
@@ -133,19 +133,19 @@ Once you have the token, you can interact with the **/message** endpoint:
 ### Using cURL
 #### HTTP GET
 To get the current message (used by the frontend):
-```
+```bash
 curl -H "Authorization: token <token>" http://localhost:8888/message
 ```
 
 #### HTTP POST
 To set a new message (currently just implemented but not in use):
-```
+```bash
 curl -X POST -H "Authorization: token <token>" -H "Content-Type: application/json" -d '{"message": "Hello", "title": "Test", "color": "red"}' http://localhost:8888/message
 ```
 
 ### Using the python requests module
 
-```
+```python
 import requests
 import json
 
