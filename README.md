@@ -3,14 +3,34 @@
 
 The Jupyter Airflow Monitoring project is a solution designed to monitor Apache Airflow's DAGs directly from your Jupyter environment. Its primary objective is to monitor only the DAGs you are interested in, and do it in a non-invasive way to avoid adding unnecessary friction. This project is particularly valuable for data scientists and developers who frequently work with Jupyter notebooks and want to keep an eye on their Airflow workflows.
 
+## Table of content
+
+1. [Why Jupyter Airflow Monitoring?](#why-jupyter-airflow-monitoring)
+2. [Installation](#installation)
+   1. [Method 1](#method-1)
+   2. [Method 2](#method-2)
+3. [Usage](#usage)
+4. [Python API](#python-api)
+5. [Using cURL/requests](#using-curl-requests)
+   1. [Using cURL](#using-curl)
+      1. [HTTP GET](#http-get)
+      2. [HTTP POST](#http-post)
+   2. [Using the python requests module](#using-the-python-requests-module)
+6. [Screenshots](#screenshots)
+7. [Contributing](#contributing)
+8. [TODOs](#todos)
+9. [License](#license)
+
 ## Why Jupyter Airflow Monitoring?
 
 While working with Airflow, it can be somewhat challenging to monitor the status of your DAGs, especially when you only need to track specific DAGs. This project proposes a solution for this problem by providing a way to specify tags for the DAGs you want to monitor and their corresponding severity levels if a DAG with the specified tag fails. This feature allows for customized and focused monitoring of your Airflow workflows. 
 
 ## Installation
 
-> :warning: **WARNING**: please note that the current version of this project is limited to systems where both Airflow and Jupyter are running on the same host. *Additionally*, it is only compatible with Airflow standalone installations. It is theoretically possible to install it on a dockerized airflow with a shared volume though but I didn't try yet (you would need to install the module on both the host and the airflow image). 
-__I plan on adding more flexibility/features in the future.__
+> :warning: **CAUTION BETA**: This is a beta version (might not be secure!). Use it at your own risks.
+
+> **KNOWN LIMITATIONS**: Please note that the current version of this project is limited to systems where both Airflow and Jupyter are running on the same host. *Additionally*, it is only compatible with Airflow standalone installations. It is theoretically possible to install it on a dockerized airflow with a shared volume though but I didn't try yet (you would need to install the module on both the host and the airflow image). 
+__I plan on adding more flexibility/features in the future.__ See the [TODOs list](#todos).
 
 To install this project, there are two methods:
 
