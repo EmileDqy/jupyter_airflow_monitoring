@@ -1,4 +1,7 @@
 # Jupyter Airflow Monitoring
+
+> :rotating_light: The project is in BETA, use with caution (see [TODOs](#todos)).
+
 ![Demo Gif](./images/demo.gif)
 
 The Jupyter Airflow Monitoring project is a solution designed to monitor Apache Airflow's DAGs directly from your Jupyter environment. Its primary objective is to monitor only the DAGs you are interested in, and do it in a non-invasive way to avoid adding unnecessary friction. This project is particularly valuable for data scientists and developers who frequently work with Jupyter notebooks and want to keep an eye on their Airflow workflows.
