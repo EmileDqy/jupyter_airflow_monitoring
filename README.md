@@ -93,6 +93,61 @@ set_message("DAG Failed", "MyDAG", "#FF0000")
 message = get_message()
 ```
 
+## Using cURL/requests
+
+> Caution: This might not be the most ideal and secure way to interact with the endpoint because it requires you to manually get the session token and store it...
+
+In order to do that, you will need to **get the session token** from the jupyter server.
+
+It usually looks something like this in the log but you can also fetch it directly from the frontend once connected:
+```
+[I 10:36:26.674 NotebookApp] Serving notebooks from local directory: /path/to/folder/
+[I 10:36:26.674 NotebookApp] Jupyter Notebook 6.5.4 is running at:
+[I 10:36:26.674 NotebookApp] http://localhost:8888/?token=<token>
+[I 10:36:26.674 NotebookApp]  or http://127.0.0.1:8888/?token=<token>
+[I 10:36:26.674 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+```
+
+Once you have the token, you can interact with the **/message** endpoint:
+
+### Using cURL
+#### HTTP GET
+To get the current message (used by the frontend):
+```
+curl -H "Authorization: token <token>" http://localhost:8888/message
+```
+
+#### HTTP POST
+To set a new message (currently just implemented but not in use):
+```
+curl -X POST -H "Authorization: token <token>" -H "Content-Type: application/json" -d '{"message": "Hello", "title": "Test", "color": "red"}' http://localhost:8888/message
+```
+
+### Using the python requests module
+
+```
+import requests
+import json
+
+token = "<your_token>"
+headers = {
+    "Authorization": f"token {token}"
+}
+
+# GET request
+response = requests.get("http://localhost:8888/message", headers=headers)
+print(response.json())
+
+# POST request
+data = {
+    "message": "Hello",
+    "title": "Test",
+    "color": "red"
+}
+response = requests.post("http://localhost:8888/message", headers=headers, data=json.dumps(data))
+print(response.json())
+```
+
 ## Screenshots
 
 ![Demo Gif](./images/demo.gif)
